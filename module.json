@@ -1,0 +1,21 @@
+{
+    "name": "AuthService",
+    "alias": "authservice",
+    "description": "",
+    "version": "0.0.1",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\AuthService\\Providers\\AuthServiceServiceProvider",
+        "Modules\\AuthService\\Providers\\RouteServiceProvider",
+        "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider"
+    ],
+    "aliases":{
+        "JWTAuth" : "Tymon\\JWTAuth\\Facades\\JWTAuth",
+        "User" : "Modules\\AuthService\\Entities\\User"
+    },
+    "files": [
+        
+    ]
+}
