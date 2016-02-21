@@ -1,5 +1,5 @@
 {
-	"name": "notegame/authservice-asgard-module",
+	"name": "notegame/authservice-module",
 	"description": "",
     "type": "asgard-module",
     "require": {
