@@ -24,11 +24,6 @@ class UserRepository extends SentinelUserRepository
         'last_name',
     ];
 
-    public static function getUser()
-    {
-        return new self(Sentinel::getUser());
-    } 
-
     public static function getAllPermission($model)
     {
         $roles = $model->roles()->get();
