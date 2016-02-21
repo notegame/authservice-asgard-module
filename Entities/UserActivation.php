@@ -24,43 +24,4 @@ class UserActivation extends Model
 		return $this->belongsTo("User");
 	}
 
-	/*public static function activate($ref_id, $code)
-	{
-
-		try {
-			$activation = Self::where("ref_id",$ref_id)
-			->where("code",$code)
-			->noExpires()
-			->firstOrFail();
-		} catch (\Exception $e) {
-			throw new \Exception(trans("authservice::exception.not_found_activate_code"));
-			return false;
-		}
-
-		$activation->completed = 1;
-		$activation->completed_at = Carbon::now();
-		$activation->save();
-
-		$user = $activation->getUser();
-
-		if($sentinel_activation = Activation::completed($user))
-		{
-			
-		}else{
-			$sentinel_activation = Activation::create($user)->code;
-			Activation::complete($user,$sentinel_activation);
-
-			//Event on Change Password
-			event(new UserWasActivated($user));
-
-		}
-		
-		return $activation;
-	}
-
-	public function getUser()
-	{
-		return $this->user()->first();
-	}*/
-
 }
