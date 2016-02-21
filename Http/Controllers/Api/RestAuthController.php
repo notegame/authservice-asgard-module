@@ -62,7 +62,7 @@ class RestAuthController extends ApiBaseController
         return response()->json($user);
     }
 
-    public function postLoginByToken()
+    public function postLoginByToken(Request $request)
     {
         $post = $request->all();
         
@@ -95,9 +95,14 @@ class RestAuthController extends ApiBaseController
 
         $token = UserRepository::loginByToken($request->get("token"), $request->get("device_id"), $post['device_os']);
 
+        $user = $token->user;
+        $user->permissions = UserRepository::getAllPermission($user);
+        $user->token = $request->get("token");
+
+
         if($token)
         {
-            return response()->json(true);
+            return response()->json($user);
         }
 
         return response()->json(false);
@@ -257,6 +262,8 @@ class RestAuthController extends ApiBaseController
     public function getProfile()
     {
         $user = Sentinel::getUser();
+        $user->permissions = UserRepository::getAllPermission($user);
+        $user->token = \Request::header("X-Auth-Token");;
 
         return $user;
     }

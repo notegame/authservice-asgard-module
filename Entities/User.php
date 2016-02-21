@@ -24,11 +24,14 @@ class User extends SentinelUser
         'last_name',
     ];
 
+	protected $dates = [
+		'last_login',
+	];
+
     public function getNameAttribute()
     {
         return $this->first_name." ".$this->last_name;
     }
-
 
     public function user_activations()
     {
@@ -49,5 +52,5 @@ class User extends SentinelUser
 
         parent::delete();
     }
-    
+
 }

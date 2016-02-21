@@ -2,7 +2,10 @@
 
 # API DOC
 
+
+
 ## Guest Only
+
 
 ### `POST` /api/auth/login
 
@@ -42,7 +45,14 @@ Attribute             | Type
 --------------------- | -------- 
 email                 | `String`
 
+
+
+
+
 ## Auth Only
+
+
+### `GET` /api/auth/profile
 
 ### `POST` /api/auth/change_password
 
