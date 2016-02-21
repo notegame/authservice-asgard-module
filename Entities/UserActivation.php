@@ -1,21 +1,21 @@
 <?php namespace Modules\AuthService\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+
+use Modules\AuthService\Events\UserWasActivated;
+
 use Activation;
 use Carbon\Carbon;
 
 class UserActivation extends Model
 {
 
-	public static function getExpires()
-	{
-		return env("ACTIVATE_CODE_EXPIRE",60); // default 60 min
-	}
+	protected $expired_time = 60;
 
 	public function scopeNoExpires($query)
 	{
 		return $query
-		->where('created_at', '>', Carbon::now()->subMinutes(self::getExpires()))
+		->where('created_at', '>', Carbon::now()->subMinutes($this->expired_time))
 		->where('completed', false);
 	}
 
@@ -44,6 +44,10 @@ class UserActivation extends Model
 		}else{
 			$sentinel_activation = Activation::create($user)->code;
 			Activation::complete($user,$sentinel_activation);
+
+			//Event on Change Password
+			event(new UserWasActivated($user));
+
 		}
 		
 		return $activation;

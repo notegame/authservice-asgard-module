@@ -16,7 +16,7 @@ class AuthServiceServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'AuthService' => [
-            'auth.token' => 'JwtTokenAuthenticate',
+            'auth.token' => 'TokenAuthenticate',
         ],
     ];
 

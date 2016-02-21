@@ -9,10 +9,9 @@
     "providers": [
         "Modules\\AuthService\\Providers\\AuthServiceServiceProvider",
         "Modules\\AuthService\\Providers\\RouteServiceProvider",
-        "Tymon\\JWTAuth\\Providers\\JWTAuthServiceProvider"
+        "Modules\\AuthService\\Providers\\EventServiceProvider"
     ],
     "aliases":{
-        "JWTAuth" : "Tymon\\JWTAuth\\Facades\\JWTAuth",
         "User" : "Modules\\AuthService\\Entities\\User"
     },
     "files": [

@@ -3,6 +3,9 @@
 use Modules\User\Entities\Sentinel\User as SentinelUser;
 use Modules\User\Entities\UserInterface;
 
+use Modules\AuthService\Events\UserWasChangedPassword;
+use Modules\AuthService\Events\UserActivationWasCreated;
+
 use Carbon\Carbon;
 use BrowserDetect;
 use Sentinel;
@@ -11,6 +14,8 @@ use Mail;
 
 class User extends SentinelUser
 {
+	protected $hidden = ['password'];
+
 	protected $fillable = [
         'email',
         'password',
@@ -19,9 +24,20 @@ class User extends SentinelUser
         'last_name',
     ];
 
+    protected $fillable_update_api = [
+    	'email',
+        'first_name',
+        'last_name',
+    ];
+
 	public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name." ".$this->last_name;
     }
 
     public function user_activations()
@@ -58,6 +74,9 @@ class User extends SentinelUser
 		$activation->ref_id = $code;
 		$activation->code = rand(1000, 9999);
 		$activation->save();
+
+		//Event on Change Password
+		event(new UserActivationWasCreated($activation));
 
 		return $activation;
 	}
@@ -140,67 +159,60 @@ class User extends SentinelUser
 
         parent::delete();
     }
-    public function RecoverPassword($user)
+
+    public function recoverPassword()
 	{
-		$NewPassword = mt_rand(100000, 999999);
-		$CreateReCode = Reminder::create($user);
-		$Reminder = Reminder::complete($user, $CreateReCode->code, $NewPassword);
+		$user = $this;
 
-		$emailTitle = "รหัสผ่านระบบ Student Messenger";
-		$emailContent = "E-mail : $user->email <br />".
-						"Your Password : <strong>$NewPassword</strong>";
+		$new_password = mt_rand(100000, 999999);
+
+		$this->changePassword($new_password);
+
+		$result = new \stdClass();
+		$result->new_password = $new_password;
 		
-		$data = array(
-					'title'=>$emailTitle,
-					'content'=>$emailContent
-				);
-
-		Mail::send('emails.template_mail', $data, function ($message) use ($user,$data){
-			$message->to($user->email, $user->first_name.' '.$user->last_name);
-			$message->subject($data['title']);
-		});
-
-		return $Reminder;
+		return $result;
     }
-	public function ChangePassword($user,$NewPassword)
+
+	public function changePassword($new_password)
 	{
-		$update = Sentinel::update($user, array('password' => $NewPassword));
+		$user = $this;
 
-		$emailTitle = "เปลี่ยนรหัสผ่านระบบ Student Messenger";
-		$emailContent = "E-mail : $user->email <br />".
-						"New Password : <strong>$NewPassword</strong>";
-		
-		$data = array(
-					'title'=>$emailTitle,
-					'content'=>$emailContent
-				);
+		$result = Sentinel::update($user, array('password' => $new_password));
 
-		Mail::send('emails.template_mail', $data, function ($message) use ($user,$data){
-			$message->to($user->email, $user->first_name.' '.$user->last_name);
-			$message->subject($data['title']);
-		});
+		//Event on Change Password
+		event(new UserWasChangedPassword($user,$new_password));
 
-		return $update;
+		return $result;
     }
-	public function ActivateSuccess($user)
+
+    //Update User Data กรองตาม field ที่ อนุญาตเท่านั้น
+    public function updateData($data)
 	{
-		$emailTitle = "ลงทะเบียน เรียบร้อยแล้ว";
-		$emailContent = "ท่านได้ลงทะเบียนการใช้ Student Messenger สำเร็จแล้ว<br />".
-						"ท่านสามารถ Login แอพพลิเคชั่นบนมือถือ เพื่อใช้งาน Student Messenger ได้ทันที<br />".
-						"<strong>Name</strong> : $user->first_name $user->last_name<br>".
-						"<strong>E-mail</strong> : $user->email <br />".
-						"<strong>Mobile</strong> : $user->phone_number";
-		
-		$data = array(
-					'title'=>$emailTitle,
-					'content'=>$emailContent
-				);
+		$user = $this;
 
-		$send = Mail::send('emails.template_mail', $data, function ($message) use ($user,$data){
-			$message->to($user->email, $user->first_name.' '.$user->last_name);
-			$message->subject($data['title']);
-		});
+		$user_table_updates = [];
 
-		return $send;
+		foreach ($data as $field => $value) {
+
+			if(in_array($field, $this->fillable_update_api))
+			{
+				if(empty($value)) continue;
+
+				$user_table_updates[$field] = $value;
+			}
+
+		}
+
+		$result = $user;
+
+		if($user_table_updates)
+		{
+			$result = Sentinel::update($user, $user_table_updates);
+		}
+
+		return $result;
     }
+
+
 }

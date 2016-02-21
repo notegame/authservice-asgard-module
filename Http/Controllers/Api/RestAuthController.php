@@ -145,29 +145,89 @@ class RestAuthController extends ApiBaseController
         return response()->json(true);
     }
 
-    public function postForgetPassword()
+    public function postForgetPassword(Request $request)
     {
-        return "postForgetPassword";
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+        ]);
+
+        if ($validator->fails()) {
+            abort(400,$validator->errors()->first());
+        }
+
+        $email = $request->get("email");
+
+        $user = User::whereEmail($email)->first();
+
+        if(!$user)
+        {
+            abort(400,trans("authservice::exception.not_found_user"));
+        }
+
+        //Reset Password
+        $forget = $user->recoverPassword();
+
+        return response()->json(true);
     }
+
+
+
+
+    // LONGED IN METHOD //
 
     public function getLogout()
     {
 
         $user = Sentinel::getUser();
+
         $user->deleteToken();
         Sentinel::logout();
         return response()->json(true);
 
     }
 
-    public function postChangePassword()
+    public function postChangePassword(Request $request)
     {
+        $user = Sentinel::getUser();
 
-        dd(Sentinel::getUser());
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
 
+        if ($validator->fails()) {
+            abort(400,$validator->errors()->first());
+        }
+        
+        $validate_password = Sentinel::validateCredentials($user, array("password"=>$request->get("current_password")));
+
+        if(!$validate_password)
+        {
+            abort(400,trans("authservice::exception.password_incorrect"));
+        }
+
+        //Change Password
+        $user->changePassword($request->get("password"));
+
+        return response()->json(true);
     }
 
+    public function postUpdate(Request $request)
+    {
+        $user = Sentinel::getUser();
 
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|unique:users,email,'.$user->id,
+        ]);
+
+        if ($validator->fails()) {
+            abort(400,$validator->errors()->first());
+        }
+        
+        $result = $user->updateData($request->all());
+        
+        return response()->json($result);
+    }
 
 
 

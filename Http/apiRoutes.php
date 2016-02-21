@@ -12,11 +12,18 @@ $router->group(['prefix' => 'auth'], function () {
 
 	post('forget_password', ['uses' => 'RestAuthController@postForgetPassword']);
 
-	get('logout', ['uses' => 'RestAuthController@getLogout']);
+	// Auth Only //
+	Route::group(['middleware' => 'auth.token'], function () {
+
+		post('change_password', ['uses' => 'RestAuthController@postChangePassword']);
+
+		post('update', ['uses' => 'RestAuthController@postUpdate']);
+
+		get('logout', ['uses' => 'RestAuthController@getLogout']);
+
+	});
 
 });
 
-$router->group(['prefix' => 'auth', 'middleware' => 'auth.token'], function () {
-	get('change_password', ['uses' => 'RestAuthController@postChangePassword']);
-});
+
 

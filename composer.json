@@ -6,7 +6,6 @@
         "php": ">=5.5",
         "composer/installers": "~1.0",
         "asgardcms/core-module": "~1.0",
-        "tymon/jwt-auth": "0.5.*",
         "hisorange/browser-detect": "2.*"
     },
     "require-dev": {
