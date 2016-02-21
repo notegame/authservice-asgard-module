@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"fu",
+				"fun	function …"
+			],
+			[
+				"emp",
+				"empty"
+			],
+			[
 				"u",
 				"user_id"
 			],
@@ -62,10 +70,6 @@
 			[
 				"province",
 				"province_id"
-			],
-			[
-				"fu",
-				"function"
 			],
 			[
 				"a",
@@ -510,15 +514,83 @@
 			[
 				"pu",
 				"public"
-			],
-			[
-				"news",
-				"Newshelperv3"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "Http/apiRoutes.php",
+			"settings":
+			{
+				"buffer_size": 775,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Http/Controllers/Api/RestAuthController.php",
+			"settings":
+			{
+				"buffer_size": 7187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "composer.json",
+			"settings":
+			{
+				"buffer_size": 850,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Repositories/UserRepository.php",
+			"settings":
+			{
+				"buffer_size": 5317,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "readme.md",
+			"settings":
+			{
+				"buffer_size": 1727,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Repositories/TokenRepository.php",
+			"settings":
+			{
+				"buffer_size": 526,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Entities/UserActivation.php",
+			"settings":
+			{
+				"buffer_size": 483,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Entities/User.php",
+			"settings":
+			{
+				"buffer_size": 1124,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Entities/Token.php",
+			"settings":
+			{
+				"buffer_size": 336,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -557,10 +629,38 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Code/SystemMonitor/Modules/Authservice"
+		"/D/Code/SystemMonitor/Modules/Authservice",
+		"/D/Code/SystemMonitor/Modules/Authservice/Entities",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Controllers",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Controllers/Api",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Requests",
+		"/D/Code/SystemMonitor/Modules/Authservice/Providers",
+		"/D/Code/SystemMonitor/Modules/Authservice/Repositories",
+		"/D/Code/SystemMonitor/Modules/Authservice/Repositories/Cache"
 	],
 	"file_history":
 	[
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Controllers/Api/ApiBaseController.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Middleware/TokenAuthenticate.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/readme.md",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Requests/AuthLoginRequest.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Http/Requests/AuthLoginReq.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Entities/Token.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Events/Handlers/SendUserActivationToUser.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/lang/th/email.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/lang/en/email.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/views/emails/user_profile.blade.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/views/emails/user_activation.blade.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Events/UserActivationWasCreated.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Events/UserWasActivated.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Entities/UserActivation.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Events/UserWasChangedPassword.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/lang/th/exception.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/module.json",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/views/emails/new_password.blade.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Events/Handlers/SendNewPasswordToEmail.php",
+		"/D/Code/SystemMonitor/Modules/Authservice/Resources/lang/en/exception.php",
 		"/D/Code/SystemMonitor/Modules/AuthService/module.json",
 		"/D/Code/student_messenger_api/database/migrations/2015_10_31_163151_crete_table_user_activations.php",
 		"/D/Code/student_messenger_api/database/migrations/2015_10_31_154428_add_username_users.php",
@@ -668,31 +768,11 @@
 		"/D/PROJECTS/PROJECTS_IONIC/student_care/www/index.html",
 		"/D/PROJECTS/PROJECTS_IONIC/student_care/plugins/cordova-plugin-device/src/android/Device.java",
 		"/D/WWW/keenskool/public/js/main.js",
-		"/D/WWW/keenskool/vendor/cartalyst/sentry/tests/EloquentGroupTest.php",
-		"/D/WWW/keenskool/app/controllers/admin/BaseController.php",
-		"/D/WWW/keenskool/app/controllers/admin/TopupController.php",
-		"/D/WWW/keenskool/app/controllers/admin/PaymentController.php",
-		"/D/WWW/keenskool/app/views/admin/payments/index.blade.php",
-		"/D/WWW/keenskool/public/css/style.css",
-		"/D/WWW/keenskool/app/routes.php",
-		"/D/WWW/keenskool/app/controllers/user/TopupController.php",
-		"/D/WWW/keenskool/app/controllers/user/UserController.php",
-		"/D/WWW/keenskool/app/controllers/admin/UserController.php",
-		"/D/WWW/keenskool/app/models/User.php",
-		"/D/WWW/keenskool/app/models/Profile.php",
-		"/D/WWW/keenskool/app/models/Province.php",
-		"/D/WWW/keenskool/app/controllers/test/Test_TestController.php",
-		"/D/WWW/keenskool/app/models/UserAddress.php",
-		"/D/WWW/keenskool/app/models/Amphur.php",
-		"/D/WWW/keenskool/app/views/admin/users/show.blade.php",
-		"/D/WWW/keenskool/app/views/user/users/show.blade.php",
-		"/D/WWW/keenskool/app/views/user/users/form_address.blade.php",
-		"/D/WWW/keenskool/app/models/Activity.php",
-		"/D/WWW/keenskool/app/models/CoinBalance.php"
+		"/D/WWW/keenskool/vendor/cartalyst/sentry/tests/EloquentGroupTest.php"
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -711,6 +791,31 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"getUser",
+			"Token::authenticate",
+			"fillable_update_api",
+			"$fillable_update_api",
+			"fillable_update_api",
+			"updateData",
+			"UserWasChangedPassword",
+			"exists",
+			"recoverPassword",
+			"UserWasActivated",
+			"Activation",
+			"getUser()",
+			"UserActivation::",
+			"SentinelAuthAdapter",
+			"UserActivationWasCreated",
+			"UserWasChangedPassword",
+			"UserActivation",
+			"UserWasChangedPassword",
+			"getExpires",
+			"ActivateSuccess",
+			"nameA",
+			"change_password",
+			"UserWasChangedPassword",
+			"postForgetPassword",
+			"ChangePassword",
 			"AuthService",
 			"noExpires",
 			"register",
@@ -813,32 +918,7 @@
 			"ActivityTrait",
 			"media=\"all\"\ntable.dataTable thead .sorting:after",
 			"register",
-			"childs",
-			"Breadcrumbs",
-			"CoinExchange::",
-			"CoinExchange",
-			"momentjs",
-			"mome",
-			"divRss",
-			"wait",
-			"billing_address",
-			"'disabled'=true",
-			"address",
-			"referent",
-			"textarea",
-			"form_fields",
-			"              @include('forms.input', ['fields' => $form_fields, 'group' => 1])\nform_fields",
-			"form_fields",
-			"new profile",
-			"profile",
-			"changePasswordRules",
-			"FormBuilder",
-			"id",
-			"getEntityType",
-			"getName",
-			"getEntityType",
-			"Utils",
-			"tracked"
+			"childs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -956,8 +1036,275 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "Http/apiRoutes.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								490,
+								490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Http/Controllers/Api/RestAuthController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								87,
+								59
+							],
+							[
+								6464,
+								6471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "composer.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 850,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								536,
+								550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Repositories/UserRepository.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5317,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4378,
+								4420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2615.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "readme.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1727,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1106,
+								1106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Repositories/TokenRepository.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Entities/UserActivation.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								479,
+								479
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Entities/User.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								579,
+								579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Entities/Token.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								333,
+								333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1014,16 +1361,60 @@
 		"selected_items":
 		[
 			[
+				"read",
+				"readme.md"
+			],
+			[
+				"apibasecontroller",
+				"Http\\Controllers\\Api\\ApiBaseController.php"
+			],
+			[
+				"tokena",
+				"Http\\Middleware\\TokenAuthenticate.php"
+			],
+			[
+				"userrepository",
+				"Repositories\\UserRepository.php"
+			],
+			[
+				"token",
+				"Entities\\Token.php"
+			],
+			[
+				"userac",
+				"Entities\\UserActivation.php"
+			],
+			[
+				"email",
+				"Resources\\lang\\th\\email.php"
+			],
+			[
+				"useractivation",
+				"Entities\\UserActivation.php"
+			],
+			[
+				"exce",
+				"Resources\\lang\\th\\exception.php"
+			],
+			[
+				"ex",
+				"Resources\\lang\\en\\exception.php"
+			],
+			[
+				"apir",
+				"Http\\apiRoutes.php"
+			],
+			[
+				"user",
+				"Entities\\User.php"
+			],
+			[
 				"composer",
 				"composer.json"
 			],
 			[
 				"apiau",
 				"app\\Http\\Middleware\\ApiAuthenticate.php"
-			],
-			[
-				"useractivation",
-				"app\\Models\\UserActivation.php"
 			],
 			[
 				"user_activations",
@@ -1054,20 +1445,12 @@
 				"database\\migrations\\2015_10_31_154428_add_username_users.php"
 			],
 			[
-				"user",
-				"app\\Models\\User.php"
-			],
-			[
 				"han",
 				"app\\Exceptions\\Handler.php"
 			],
 			[
 				"app",
 				"config\\app.php"
-			],
-			[
-				"apibasecontroller",
-				"app\\Http\\Controllers\\Api\\ApiBaseController.php"
 			],
 			[
 				"serc",
@@ -1488,42 +1871,6 @@
 			[
 				"com",
 				"composer.json"
-			],
-			[
-				"confi",
-				"app\\config\\packages\\chumper\\datatable\\config.php"
-			],
-			[
-				"logviewer",
-				"app\\views\\admin\\system\\logviewer.blade.php"
-			],
-			[
-				"cartalyst/sentry/users/eloquent/user",
-				"vendor\\cartalyst\\sentry\\src\\Cartalyst\\Sentry\\Users\\Eloquent\\User.php"
-			],
-			[
-				"c",
-				"composer.json"
-			],
-			[
-				"translatable/translatable.php",
-				"vendor\\dimsav\\laravel-translatable\\Translatable\\Translatable.php"
-			],
-			[
-				"glo",
-				"app\\start\\global.php"
-			],
-			[
-				"aut",
-				"app\\controllers\\Api\\AuthController.php"
-			],
-			[
-				"apia",
-				"app\\tests\\ApiAuthTest.php"
-			],
-			[
-				"co",
-				"composer.json"
 			]
 		],
 		"width": 0.0
@@ -1554,7 +1901,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 200.0,
+	"side_bar_width": 298.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
