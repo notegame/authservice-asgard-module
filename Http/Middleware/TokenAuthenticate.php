@@ -1,6 +1,6 @@
 <?php namespace Modules\AuthService\Http\Middleware;
 
-use Modules\AuthService\Entities\Token;
+use Modules\AuthService\Repositories\TokenRepository;
 
 class TokenAuthenticate
 {
@@ -10,7 +10,7 @@ class TokenAuthenticate
         {
             abort(400,trans("authservice::exception.not_found_token"));
         }else{
-            $token = Token::authenticate($request->header('X-Auth-Token'));
+            $token = TokenRepository::authenticate($request->header('X-Auth-Token'));
 
             if(!$token)
             {

@@ -24,21 +24,11 @@ class User extends SentinelUser
         'last_name',
     ];
 
-    protected $fillable_update_api = [
-    	'email',
-        'first_name',
-        'last_name',
-    ];
-
-	public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
-
     public function getNameAttribute()
     {
         return $this->first_name." ".$this->last_name;
     }
+
 
     public function user_activations()
     {
@@ -49,6 +39,18 @@ class User extends SentinelUser
     {
     	return $this->hasMany("Modules\AuthService\Entities\Token");
     }
+
+    public function delete()
+    {
+        if ($this->exists) {
+            $this->user_activations()->delete();
+            $this->tokens()->delete();
+        }
+
+        parent::delete();
+    }
+
+    /*
 
     public function createActivation()
 	{
@@ -149,17 +151,6 @@ class User extends SentinelUser
 
 	}
 
-	public function delete()
-    {
-        if ($this->exists) {
-            $this->user_activations()->delete();
-            $this->messages()->delete();
-            $this->tokens()->delete();
-        }
-
-        parent::delete();
-    }
-
     public function recoverPassword()
 	{
 		$user = $this;
@@ -213,6 +204,6 @@ class User extends SentinelUser
 
 		return $result;
     }
-
+	*/
 
 }

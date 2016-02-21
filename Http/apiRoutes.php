@@ -15,6 +15,8 @@ $router->group(['prefix' => 'auth'], function () {
 	// Auth Only //
 	Route::group(['middleware' => 'auth.token'], function () {
 
+		get('profile', ['uses' => 'RestAuthController@getProfile']);
+
 		post('change_password', ['uses' => 'RestAuthController@postChangePassword']);
 
 		post('update', ['uses' => 'RestAuthController@postUpdate']);

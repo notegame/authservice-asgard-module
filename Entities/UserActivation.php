@@ -19,7 +19,12 @@ class UserActivation extends Model
 		->where('completed', false);
 	}
 
-	public static function activate($ref_id, $code)
+	public function user()
+	{
+		return $this->belongsTo("User");
+	}
+
+	/*public static function activate($ref_id, $code)
 	{
 
 		try {
@@ -56,10 +61,6 @@ class UserActivation extends Model
 	public function getUser()
 	{
 		return $this->user()->first();
-	}
+	}*/
 
-	public function user()
-	{
-		return $this->belongsTo("User");
-	}
 }

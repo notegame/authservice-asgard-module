@@ -9,6 +9,8 @@ use JWTAuth;
 use Modules\AuthService\Entities\User;
 use Modules\AuthService\Entities\UserActivation;
 
+use Modules\AuthService\Repositories\UserRepository;
+
 class RestAuthController extends ApiBaseController
 {
 
@@ -50,10 +52,12 @@ class RestAuthController extends ApiBaseController
         }
 
         // Get All Permissions
-        $user->permissions = User::getAllPermission($user);
+        //$user->permissions = User::getAllPermission($user);
+        $user->permissions = UserRepository::getAllPermission($user);
 
         // Get Token
-        $user->token = $user->cerateToken($request->get("device_id"),$request->get("device_os"));
+        //$user->token = $user->cerateToken($request->get("device_id"),$request->get("device_os"));
+        $user->token = UserRepository::cerateToken($user,$request->get("device_id"),$request->get("device_os"));
 
         return response()->json($user);
     }
@@ -78,7 +82,7 @@ class RestAuthController extends ApiBaseController
             abort(400,$validator->errors()->first());
         }
 
-        $token = Token::valid()->where("token",$request->get("token"))->first();
+        /*$token = Token::valid()->where("token",$request->get("token"))->first();
 
         if($token)
         {
@@ -86,6 +90,13 @@ class RestAuthController extends ApiBaseController
             $token->device_os = $post['device_os'];
             $token->save();
 
+            return response()->json(true);
+        }*/
+
+        $token = UserRepository::loginByToken($request->get("token"), $request->get("device_id"), $post['device_os']);
+
+        if($token)
+        {
             return response()->json(true);
         }
 
@@ -104,13 +115,20 @@ class RestAuthController extends ApiBaseController
             abort(400,$validator->errors()->first());
         }
 
-        $user = Sentinel::register([
+        /*$user = Sentinel::register([
             'email' => $request->get('email'),
             'password' => $request->get('password'),
         ]);
         
         // Activate ref_id
-        $activation_ref_id = $user->createActivation()->ref_id;
+        $activation_ref_id = $user->createActivation()->ref_id;*/
+
+        $user = UserRepository::register([
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+        ]);
+
+        $activation_ref_id = UserRepository::createActivation($user)->ref_id;
         
         return response()->json([
             'activation' => [
@@ -134,7 +152,8 @@ class RestAuthController extends ApiBaseController
         try {
 
             // Activate
-            $activation = UserActivation::activate($request->get("ref_id"),$request->get("code"));
+            // $activation = UserActivation::activate($request->get("ref_id"),$request->get("code"));
+            UserRepository::activation($request->get("ref_id"), $request->get("code"));
 
         } catch (\Exception $e) {
 
@@ -165,7 +184,8 @@ class RestAuthController extends ApiBaseController
         }
 
         //Reset Password
-        $forget = $user->recoverPassword();
+        //$forget = $user->recoverPassword();
+        $forget = UserRepository::recoverPassword($user);
 
         return response()->json(true);
     }
@@ -179,9 +199,12 @@ class RestAuthController extends ApiBaseController
     {
 
         $user = Sentinel::getUser();
+        
+        //$user->deleteToken();
+        UserRepository::deleteToken($user);
 
-        $user->deleteToken();
         Sentinel::logout();
+
         return response()->json(true);
 
     }
@@ -207,7 +230,8 @@ class RestAuthController extends ApiBaseController
         }
 
         //Change Password
-        $user->changePassword($request->get("password"));
+        //$user->changePassword($request->get("password"));
+        UserRepository::changePassword($user, $request->get("password"));
 
         return response()->json(true);
     }
@@ -224,9 +248,17 @@ class RestAuthController extends ApiBaseController
             abort(400,$validator->errors()->first());
         }
         
-        $result = $user->updateData($request->all());
+        //$result = $user->updateData($request->all());
+        $result = UserRepository::updateData($user, $request->all());
         
         return response()->json($result);
+    }
+
+    public function getProfile()
+    {
+        $user = Sentinel::getUser();
+
+        return $user;
     }
 
 
